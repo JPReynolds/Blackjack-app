@@ -8,11 +8,12 @@ class App extends React.Component {
   state = {
     dealersHand: [{ value: null, img: facedowncard }],
     playersHand: [],
+    playerScore: 0,
     cardsDealt: false,
   };
 
   render() {
-    console.log(this.state.playersHand);
+    console.log(this.state.playerScore);
     return (
       <div className="App">
         <header className="App-header">
@@ -76,14 +77,24 @@ class App extends React.Component {
     const selectedCardTwo = cards[Math.floor(Math.random() * cards.length)];
     if (this.state.playersHand.length >= 2) {
       const newPlayersHand = [...this.state.playersHand, selectedCardOne];
-      this.setState({ playersHand: newPlayersHand, cardsDealt: true });
+      const score = this.state.playerScore + selectedCardOne.value;
+      this.setState({
+        playersHand: newPlayersHand,
+        cardsDealt: true,
+        playerScore: score,
+      });
     } else {
       const newPlayersHand = [
         ...this.state.playersHand,
         selectedCardOne,
         selectedCardTwo,
       ];
-      this.setState({ playersHand: newPlayersHand, cardsDealt: true });
+      const firstScore = selectedCardOne.value + selectedCardTwo.value;
+      this.setState({
+        playersHand: newPlayersHand,
+        cardsDealt: true,
+        playerScore: firstScore,
+      });
     }
   };
 }
