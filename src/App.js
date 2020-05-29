@@ -1,24 +1,25 @@
 import React from 'react';
 import './App.css';
 import StartGame from './Components/StartGame';
-import facedowncard from './images/facedowncard.png';
 import Player from './Components/Player';
+import Dealer from './Components/Dealer';
 
 class App extends React.Component {
   state = {
-    dealersHand: [{ value: null, img: facedowncard }],
+    dealersHand: [],
     playersHand: [],
     playerScore: 0,
+    dealerScore: 0,
     cardsDealt: false,
   };
 
   render() {
-    console.log(this.state.playerScore);
     return (
       <div className="App">
         <header className="App-header">
           <h1>BLACKJACK</h1>
         </header>
+        <Dealer hand={this.state.dealersHand} />
         <StartGame
           dealersHand={this.state.dealersHand}
           playersHand={this.state.playersHand}
@@ -75,13 +76,17 @@ class App extends React.Component {
     ];
     const selectedCardOne = cards[Math.floor(Math.random() * cards.length)];
     const selectedCardTwo = cards[Math.floor(Math.random() * cards.length)];
+    const dealerCardOne = cards[Math.floor(Math.random() * cards.length)];
+    const dealerCardTwo = cards[Math.floor(Math.random() * cards.length)];
     if (this.state.playersHand.length >= 2) {
       const newPlayersHand = [...this.state.playersHand, selectedCardOne];
+      const dealersHand = [dealerCardOne, dealerCardTwo];
       const score = this.state.playerScore + selectedCardOne.value;
       this.setState({
         playersHand: newPlayersHand,
         cardsDealt: true,
         playerScore: score,
+        dealersHand,
       });
     } else {
       const newPlayersHand = [

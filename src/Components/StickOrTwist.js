@@ -3,8 +3,8 @@ import React from 'react';
 const StickOrTwist = (props) => {
   return (
     <div>
-      <button onClick={props.dealCards}>STICK</button>
-      <button onClick={props.twist}>TWIST</button>
+      <button onClick={props.stick}>STICK</button>
+      <button onClick={props.dealCards}>TWIST</button>
     </div>
   );
 };
