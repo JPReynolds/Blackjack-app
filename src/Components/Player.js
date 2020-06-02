@@ -19,7 +19,10 @@ class Player extends Component {
             />
           );
         })}
-        <StickOrTwist dealCards={this.props.dealCards} />
+        <StickOrTwist
+          dealCards={this.props.dealCards}
+          stick={this.props.stick}
+        />
       </div>
     );
   }

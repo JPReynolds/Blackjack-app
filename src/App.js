@@ -11,6 +11,7 @@ class App extends React.Component {
     playerScore: 0,
     dealerScore: 0,
     cardsDealt: false,
+    stick: false,
   };
 
   render() {
@@ -19,14 +20,20 @@ class App extends React.Component {
         <header className="App-header">
           <h1>BLACKJACK</h1>
         </header>
-        <Dealer hand={this.state.dealersHand} />
+        {this.state.stick === true && (
+          <Dealer hand={this.state.dealersHand} stick={this.stick} />
+        )}
         <StartGame
           dealersHand={this.state.dealersHand}
           playersHand={this.state.playersHand}
           dealCards={this.dealCards}
         />
         {this.state.cardsDealt === true && (
-          <Player hand={this.state.playersHand} dealCards={this.dealCards} />
+          <Player
+            hand={this.state.playersHand}
+            dealCards={this.dealCards}
+            stick={this.stick}
+          />
         )}
       </div>
     );
@@ -101,6 +108,10 @@ class App extends React.Component {
         playerScore: firstScore,
       });
     }
+  };
+
+  stick = () => {
+    this.setState({ stick: true });
   };
 }
 
