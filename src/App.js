@@ -15,26 +15,33 @@ class App extends React.Component {
   };
 
   render() {
+    const {
+      stick,
+      playerScore,
+      dealersHand,
+      playersHand,
+      cardsDealt,
+    } = this.state;
     return (
       <div className="App">
         <header className="App-header">
           <h1>BLACKJACK</h1>
         </header>
-        {this.state.stick === true ||
-          (this.state.playerScore >= 21 && (
-            <Dealer hand={this.state.dealersHand} stick={this.stick} />
+        {stick === true ||
+          (playerScore >= 21 && (
+            <Dealer hand={dealersHand} stick={this.stick} />
           ))}
         <StartGame
-          dealersHand={this.state.dealersHand}
-          playersHand={this.state.playersHand}
+          dealersHand={dealersHand}
+          playersHand={playersHand}
           dealCards={this.dealCards}
         />
-        {this.state.cardsDealt === true && (
+        {cardsDealt === true && (
           <Player
-            hand={this.state.playersHand}
+            hand={playersHand}
             dealCards={this.dealCards}
             stick={this.stick}
-            value={this.state.playerScore}
+            value={playerScore}
           />
         )}
       </div>

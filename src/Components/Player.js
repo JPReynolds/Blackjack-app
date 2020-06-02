@@ -6,6 +6,7 @@ class Player extends Component {
     dealNewCard: false,
   };
   render() {
+    const { dealCards, stick, value } = this.props;
     return (
       <div>
         {this.props.hand.map((card) => {
@@ -19,11 +20,8 @@ class Player extends Component {
             />
           );
         })}
-        <StickOrTwist
-          dealCards={this.props.dealCards}
-          stick={this.props.stick}
-        />
-        <p>{this.props.value}</p>
+        <StickOrTwist dealCards={dealCards} stick={stick} />
+        <p>{value}</p>
       </div>
     );
   }
