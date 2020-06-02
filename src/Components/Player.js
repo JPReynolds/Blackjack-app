@@ -23,6 +23,7 @@ class Player extends Component {
           dealCards={this.props.dealCards}
           stick={this.props.stick}
         />
+        <p>{this.props.value}</p>
       </div>
     );
   }
