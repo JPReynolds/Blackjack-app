@@ -27,10 +27,12 @@ class App extends React.Component {
         <header className="App-header">
           <h1>BLACKJACK</h1>
         </header>
-        {stick === true ||
-          (playerScore >= 21 && (
-            <Dealer hand={dealersHand} stick={this.stick} />
-          ))}
+        <Dealer
+          stick={stick}
+          hand={dealersHand}
+          dealCards={this.dealCards}
+          score={playerScore}
+        />
         <StartGame
           dealersHand={dealersHand}
           playersHand={playersHand}

@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
+import DealerHand from '../Components/DealerHand';
+import SetUp from '../Components/SetUp';
 
-const Dealer = (props) => {
-  return (
-    <div>
-      {props.hand.map((card) => {
-        return (
-          <img
-            src={require(`../images/${card.value.toString() + card.suit}.jpg`)}
-            alt="card"
-            className="card"
-          />
-        );
-      })}
-    </div>
-  );
-};
-
-export default Dealer;
+export default class Dealer extends Component {
+  render() {
+    return (
+      <div>
+        {this.props.stick === true || this.props.score >= 21 ? (
+          <DealerHand hand={this.props.hand} stick={this.props.stick} />
+        ) : (
+          <SetUp />
+        )}
+      </div>
+    );
+  }
+}
