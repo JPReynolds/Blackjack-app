@@ -3,6 +3,10 @@ import DealerHand from '../Components/DealerHand';
 import SetUp from '../Components/SetUp';
 
 export default class Dealer extends Component {
+  componentDidMount() {
+    this.props.dealCardsDealer();
+  }
+
   render() {
     return (
       <div>

@@ -15,6 +15,7 @@ class App extends React.Component {
   };
 
   render() {
+    console.log(this.state.dealersHand);
     const {
       stick,
       playerScore,
@@ -30,7 +31,7 @@ class App extends React.Component {
         <Dealer
           stick={stick}
           hand={dealersHand}
-          dealCards={this.dealCards}
+          dealCardsDealer={this.dealCardsDealer}
           score={playerScore}
         />
         <StartGame
@@ -94,20 +95,14 @@ class App extends React.Component {
     ];
     const selectedCardOne = cards[Math.floor(Math.random() * cards.length)];
     const selectedCardTwo = cards[Math.floor(Math.random() * cards.length)];
-    const dealerCardOne = cards[Math.floor(Math.random() * cards.length)];
-    const dealerCardTwo = cards[Math.floor(Math.random() * cards.length)];
 
     if (this.state.playersHand.length >= 2) {
       const newPlayersHand = [...this.state.playersHand, selectedCardOne];
-      const dealersHand = [dealerCardOne, dealerCardTwo];
       const playerScore = this.state.playerScore + selectedCardOne.value;
-      const dealerScore = dealerCardOne.value + dealerCardTwo.value;
       this.setState({
         playersHand: newPlayersHand,
         cardsDealt: true,
         playerScore,
-        dealersHand,
-        dealerScore,
       });
     } else {
       const newPlayersHand = [
@@ -173,9 +168,21 @@ class App extends React.Component {
     ];
     const dealerCardOne = cards[Math.floor(Math.random() * cards.length)];
     const dealerCardTwo = cards[Math.floor(Math.random() * cards.length)];
+    const dealersHand = [dealerCardOne, dealerCardTwo];
+    const dealerScore = dealerCardOne.value + dealerCardTwo.value;
 
-    if (this.state.dealerScore < 17) {
+    if (this.state.dealersHand.length === 0) {
+      this.setState({ dealersHand, dealerScore });
     }
+
+    // if (this.state.dealerScore < 17) {
+    //   const dealerCardOne = cards[Math.floor(Math.random() * cards.length)];
+    //   setTimeout(() => {
+    //     this.setState({
+    //       dealersHand: [...this.state.dealersHand, dealerCardOne],
+    //     });
+    //   }, 3000);
+    // }
   };
 }
 
