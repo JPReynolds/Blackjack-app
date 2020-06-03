@@ -175,14 +175,15 @@ class App extends React.Component {
       this.setState({ dealersHand, dealerScore });
     }
 
-    // if (this.state.dealerScore < 17) {
-    //   const dealerCardOne = cards[Math.floor(Math.random() * cards.length)];
-    //   setTimeout(() => {
-    //     this.setState({
-    //       dealersHand: [...this.state.dealersHand, dealerCardOne],
-    //     });
-    //   }, 3000);
-    // }
+    if (this.state.dealerScore < 17) {
+      const dealerCardOne = cards[Math.floor(Math.random() * cards.length)];
+      setTimeout(() => {
+        console.log('hello');
+        this.setState({
+          dealersHand: [...this.state.dealersHand, dealerCardOne],
+        });
+      }, 3000);
+    }
   };
 }
 
