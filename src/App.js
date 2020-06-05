@@ -15,6 +15,7 @@ class App extends React.Component {
   };
 
   render() {
+    console.log(this.state.dealerScore);
     const {
       stick,
       playerScore,
@@ -186,6 +187,9 @@ class App extends React.Component {
         });
       }, 3000);
     }
+    // if (this.state.dealerScore > 17) {
+    //   this.setState({ stick: false });
+    // }
   };
 }
 

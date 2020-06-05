@@ -6,7 +6,7 @@ export default class Dealer extends Component {
   render() {
     return (
       <div>
-        {this.props.stick === true || this.props.playerScore >= 21 ? (
+        {this.props.playerScore >= 21 ? (
           <DealerHand
             hand={this.props.hand}
             stick={this.props.stick}
