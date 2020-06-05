@@ -2,7 +2,18 @@
   text-align: center;
 }
 
+.h1 {
+  font-weight: 700;
+}
+
 .card {
   height: 200px;
   width: 150px;
+}
+
+button {
+  height: 75px;
+  width: 150px;
+  font-weight: 600;
+  letter-spacing: 0.5em;
 }
