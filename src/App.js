@@ -15,13 +15,13 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state.dealersHand);
     const {
       stick,
       playerScore,
       dealersHand,
       playersHand,
       cardsDealt,
+      dealerScore,
     } = this.state;
     return (
       <div className="App">
@@ -32,7 +32,8 @@ class App extends React.Component {
           stick={stick}
           hand={dealersHand}
           dealCardsDealer={this.dealCardsDealer}
-          score={playerScore}
+          playerScore={playerScore}
+          dealerScore={dealerScore}
         />
         <StartGame
           dealersHand={dealersHand}
@@ -166,21 +167,22 @@ class App extends React.Component {
       { value: 9, suit: 'C' },
       { value: 10, suit: 'C' },
     ];
-    const dealerCardOne = cards[Math.floor(Math.random() * cards.length)];
-    const dealerCardTwo = cards[Math.floor(Math.random() * cards.length)];
-    const dealersHand = [dealerCardOne, dealerCardTwo];
-    const dealerScore = dealerCardOne.value + dealerCardTwo.value;
 
     if (this.state.dealersHand.length === 0) {
+      const dealerCardOne = cards[Math.floor(Math.random() * cards.length)];
+      const dealerCardTwo = cards[Math.floor(Math.random() * cards.length)];
+      const dealersHand = [dealerCardOne, dealerCardTwo];
+      const dealerScore = dealerCardOne.value + dealerCardTwo.value;
       this.setState({ dealersHand, dealerScore });
     }
 
     if (this.state.dealerScore < 17) {
       const dealerCardOne = cards[Math.floor(Math.random() * cards.length)];
+      const dealerScore = this.state.dealerScore + dealerCardOne.value;
       setTimeout(() => {
-        console.log('hello');
         this.setState({
           dealersHand: [...this.state.dealersHand, dealerCardOne],
+          dealerScore,
         });
       }, 3000);
     }

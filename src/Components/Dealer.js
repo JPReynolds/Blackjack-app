@@ -3,15 +3,16 @@ import DealerHand from '../Components/DealerHand';
 import SetUp from '../Components/SetUp';
 
 export default class Dealer extends Component {
-  componentDidMount() {
-    this.props.dealCardsDealer();
-  }
-
   render() {
     return (
       <div>
-        {this.props.stick === true || this.props.score >= 21 ? (
-          <DealerHand hand={this.props.hand} stick={this.props.stick} />
+        {this.props.stick === true || this.props.playerScore >= 21 ? (
+          <DealerHand
+            hand={this.props.hand}
+            stick={this.props.stick}
+            deal={this.props.dealCardsDealer}
+            dealerScore={this.props.dealerScore}
+          />
         ) : (
           <SetUp />
         )}
