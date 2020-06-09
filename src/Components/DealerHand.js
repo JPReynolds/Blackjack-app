@@ -4,11 +4,12 @@ class DealerHand extends Component {
   componentDidMount() {
     this.props.deal();
   }
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.dealerScore < 17) {
-  //     this.props.deal();
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    console.log(this.props.dealerScore);
+    if (this.props.dealerScore < 17) {
+      this.props.deal();
+    }
+  }
   render() {
     return (
       <div>

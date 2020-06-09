@@ -15,7 +15,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state.dealerScore);
     const {
       stick,
       playerScore,
@@ -177,7 +176,7 @@ class App extends React.Component {
       this.setState({ dealersHand, dealerScore });
     }
 
-    if (this.state.dealerScore < 17) {
+    if (this.state.dealerScore < 17 && this.state.dealersHand.length > 0) {
       const dealerCardOne = cards[Math.floor(Math.random() * cards.length)];
       const dealerScore = this.state.dealerScore + dealerCardOne.value;
       setTimeout(() => {
