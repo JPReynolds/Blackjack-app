@@ -12,6 +12,7 @@ class App extends React.Component {
     dealerScore: 0,
     cardsDealt: false,
     stick: false,
+    startGame: false,
   };
 
   render() {
@@ -22,6 +23,7 @@ class App extends React.Component {
       playersHand,
       cardsDealt,
       dealerScore,
+      startGame,
     } = this.state;
     return (
       <div className="App">
@@ -35,11 +37,15 @@ class App extends React.Component {
           playerScore={playerScore}
           dealerScore={dealerScore}
         />
-        <StartGame
-          dealersHand={dealersHand}
-          playersHand={playersHand}
-          dealCards={this.dealCards}
-        />
+        {startGame === false && (
+          <StartGame
+            dealersHand={dealersHand}
+            playersHand={playersHand}
+            dealCards={this.dealCards}
+            startGame={this.startGame}
+          />
+        )}
+
         {cardsDealt === true && (
           <Player
             hand={playersHand}
@@ -51,6 +57,13 @@ class App extends React.Component {
       </div>
     );
   }
+
+  startGame = () => {
+    this.setState({
+      startGame: true,
+    });
+  };
+
   dealCards = () => {
     const cards = [
       // { value: 1, suit: 'H' },

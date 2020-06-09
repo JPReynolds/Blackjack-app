@@ -13,6 +13,7 @@ export default class Dealer extends Component {
             stick={this.props.stick}
             deal={this.props.dealCardsDealer}
             dealerScore={this.props.dealerScore}
+            playerScore={this.props.playerScore}
           />
         ) : (
           <SetUp />

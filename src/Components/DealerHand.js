@@ -4,8 +4,7 @@ class DealerHand extends Component {
   componentDidMount() {
     this.props.deal();
   }
-  componentDidUpdate(prevProps) {
-    console.log(this.props.dealerScore);
+  componentDidUpdate() {
     if (this.props.dealerScore < 17) {
       this.props.deal();
     }
@@ -13,6 +12,8 @@ class DealerHand extends Component {
   render() {
     return (
       <div>
+        {this.props.dealerScore > 17 &&
+          this.props.dealerScore > this.props.playerScore && <p>Dealer wins</p>}
         {this.props.hand.map((card) => {
           return (
             <img

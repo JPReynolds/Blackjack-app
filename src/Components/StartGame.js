@@ -10,6 +10,7 @@ class StartGame extends Component {
   }
   onClick = () => {
     this.props.dealCards();
+    this.props.startGame();
   };
 }
 
