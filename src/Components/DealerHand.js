@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Winner from './Winner';
 
 class DealerHand extends Component {
   componentDidMount() {
@@ -12,8 +13,6 @@ class DealerHand extends Component {
   render() {
     return (
       <div>
-        {this.props.dealerScore > 17 &&
-          this.props.dealerScore > this.props.playerScore && <p>Dealer wins</p>}
         {this.props.hand.map((card) => {
           return (
             <img
@@ -25,6 +24,10 @@ class DealerHand extends Component {
             />
           );
         })}
+        <Winner
+          dealerScore={this.props.dealerScore}
+          playerScore={this.props.playerScore}
+        />
       </div>
     );
   }
