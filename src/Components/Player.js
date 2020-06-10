@@ -21,7 +21,7 @@ class Player extends Component {
           );
         })}
         <StickOrTwist dealCards={dealCards} stick={stick} />
-        <p>{value}</p>
+        <p className="score">{value}</p>
       </div>
     );
   }

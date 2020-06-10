@@ -36,6 +36,8 @@ class App extends React.Component {
           dealCardsDealer={this.dealCardsDealer}
           playerScore={playerScore}
           dealerScore={dealerScore}
+          playerHand={playersHand}
+          startGame={startGame}
         />
         {startGame === false && (
           <StartGame
@@ -181,7 +183,7 @@ class App extends React.Component {
       { value: 10, suit: 'C' },
     ];
 
-    if (this.state.dealersHand.length === 0) {
+    if (this.state.startGame === true) {
       const dealerCardOne = cards[Math.floor(Math.random() * cards.length)];
       const dealerCardTwo = cards[Math.floor(Math.random() * cards.length)];
       const dealersHand = [dealerCardOne, dealerCardTwo];

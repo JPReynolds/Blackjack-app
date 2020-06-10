@@ -1,14 +1,18 @@
 .App {
   text-align: center;
+  background-color: darkgreen;
 }
 
-.h1 {
+h1 {
   font-weight: 700;
+  padding-top: 50px;
 }
 
 .card {
-  height: 200px;
-  width: 150px;
+  height: 170px;
+  width: 130px;
+  padding: 10px;
+  margin-bottom: 40px;
 }
 
 button {
@@ -16,4 +20,10 @@ button {
   width: 150px;
   font-weight: 600;
   letter-spacing: 0.5em;
+  margin: 10px 10px 30px 10px;
+}
+
+.score {
+  font-size: 3em;
+  margin: 0 0 10px 0;
 }
