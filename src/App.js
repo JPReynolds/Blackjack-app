@@ -182,28 +182,28 @@ class App extends React.Component {
       { value: 9, suit: 'C' },
       { value: 10, suit: 'C' },
     ];
-
-    if (this.state.startGame === true) {
-      const dealerCardOne = cards[Math.floor(Math.random() * cards.length)];
-      const dealerCardTwo = cards[Math.floor(Math.random() * cards.length)];
-      const dealersHand = [dealerCardOne, dealerCardTwo];
-      const dealerScore = dealerCardOne.value + dealerCardTwo.value;
-      this.setState({ dealersHand, dealerScore });
-    }
-
-    if (this.state.dealerScore < 17 && this.state.dealersHand.length > 0) {
-      const dealerCardOne = cards[Math.floor(Math.random() * cards.length)];
-      const dealerScore = this.state.dealerScore + dealerCardOne.value;
-      setTimeout(() => {
-        this.setState({
-          dealersHand: [...this.state.dealersHand, dealerCardOne],
-          dealerScore,
-        });
-      }, 3000);
-    }
-    // if (this.state.dealerScore > 17) {
-    //   this.setState({ stick: false });
-    // }
+    const dealerCardOne = cards[Math.floor(Math.random() * cards.length)];
+    const dealerCardTwo = cards[Math.floor(Math.random() * cards.length)];
+    const dealerCardThree = cards[Math.floor(Math.random() * cards.length)];
+    const dealerCardFour = cards[Math.floor(Math.random() * cards.length)];
+    const dealerCardFive = cards[Math.floor(Math.random() * cards.length)];
+    const dealerCardSix = cards[Math.floor(Math.random() * cards.length)];
+    const dealersHand = [
+      dealerCardOne,
+      dealerCardTwo,
+      dealerCardThree,
+      dealerCardFour,
+      dealerCardFive,
+      dealerCardSix,
+    ];
+    const dealerScore =
+      dealerCardOne.value +
+      dealerCardTwo.value +
+      dealerCardThree.value +
+      dealerCardFour.value +
+      dealerCardFive.value +
+      dealerCardSix.value;
+    this.setState({ dealersHand, dealerScore });
   };
 }
 
