@@ -182,28 +182,21 @@ class App extends React.Component {
       { value: 9, suit: 'C' },
       { value: 10, suit: 'C' },
     ];
-    const dealerCardOne = cards[Math.floor(Math.random() * cards.length)];
-    const dealerCardTwo = cards[Math.floor(Math.random() * cards.length)];
-    const dealerCardThree = cards[Math.floor(Math.random() * cards.length)];
-    const dealerCardFour = cards[Math.floor(Math.random() * cards.length)];
-    const dealerCardFive = cards[Math.floor(Math.random() * cards.length)];
-    const dealerCardSix = cards[Math.floor(Math.random() * cards.length)];
-    const dealersHand = [
-      dealerCardOne,
-      dealerCardTwo,
-      dealerCardThree,
-      dealerCardFour,
-      dealerCardFive,
-      dealerCardSix,
-    ];
-    const dealerScore =
-      dealerCardOne.value +
-      dealerCardTwo.value +
-      dealerCardThree.value +
-      dealerCardFour.value +
-      dealerCardFive.value +
-      dealerCardSix.value;
-    this.setState({ dealersHand, dealerScore });
+
+    if (this.state.playersHand.length === 2) {
+      const dealerCardOne = cards[Math.floor(Math.random() * cards.length)];
+      const dealerCardTwo = cards[Math.floor(Math.random() * cards.length)];
+      const dealersHand = [dealerCardOne, dealerCardTwo];
+      const dealerScore = dealerCardOne.value + dealerCardTwo.value;
+      this.setState({ dealersHand, dealerScore });
+    } else {
+      const dealerCard = cards[Math.floor(Math.random() * cards.length)];
+      const dealerScore = this.state.dealerScore + dealerCard.value;
+      this.setState({
+        dealersHand: [...this.state.dealersHand, dealerCard],
+        dealerScore,
+      });
+    }
   };
 }
 

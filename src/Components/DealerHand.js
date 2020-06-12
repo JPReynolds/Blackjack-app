@@ -6,45 +6,29 @@ class DealerHand extends Component {
     this.props.deal();
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      (this.props.stick === true || this.props.playerScore > 21) &&
+      this.props.dealerScore < 17
+    ) {
+      this.props.deal();
+    }
+  }
+
   render() {
     return (
       <div>
-        {(this.props.stick === true || this.props.playerScore >= 21) &&
-          this.props.hand.map((card) => {
-            return (
-              <img
-                src={require(`../images/${
-                  card.value.toString() + card.suit
-                }.jpg`)}
-                alt="card"
-                className="card"
-              />
-            );
-          })}
-        {this.props.playerHand.length >= 2 &&
-          this.props.stick === false &&
-          this.props.playerScore < 21 && (
+        {this.props.hand.map((card) => {
+          return (
             <img
               src={require(`../images/${
-                this.props.playerHand[0].value.toString() +
-                this.props.playerHand[0].suit
+                card.value.toString() + card.suit
               }.jpg`)}
               alt="card"
               className="card"
             />
-          )}
-        {this.props.playerHand.length >= 2 &&
-          this.props.stick === false &&
-          this.props.playerScore < 21 && (
-            <img
-              src={require(`../images/${
-                this.props.playerHand[1].value.toString() +
-                this.props.playerHand[1].suit
-              }.jpg`)}
-              alt="card"
-              className="card"
-            />
-          )}
+          );
+        })}
 
         <Winner
           dealerScore={this.props.dealerScore}
