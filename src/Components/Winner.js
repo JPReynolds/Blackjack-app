@@ -16,17 +16,7 @@ const Winner = (props) => {
       </div>
     );
   }
-  return <div>hello</div>;
+  return <div></div>;
 };
 
 export default Winner;
-
-//   winnerDecider = () => {
-//       if()
-//     //player wins
-//     //playerScore > DealerScore && playerScore <= 21
-//     //dealer wins
-//     //dealerScore > playerScore && dealerScore <= 21
-//     //draw
-//     //dealerScore > 21 && playerScore > 21
-//   };
