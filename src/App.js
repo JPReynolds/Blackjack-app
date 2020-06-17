@@ -142,6 +142,7 @@ class App extends React.Component {
       playerScore: 0,
       stick: false,
       startGame: false,
+      playerCardsDealt: false,
     });
   };
 }

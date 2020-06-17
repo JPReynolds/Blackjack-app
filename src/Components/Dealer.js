@@ -98,6 +98,6 @@ export default class Dealer extends Component {
   };
 
   resetDealer = () => {
-    this.setState({ dealersHand: [], dealerScore: 0 });
+    this.setState({ dealersHand: [], dealerScore: 0, cardsDealt: false });
   };
 }

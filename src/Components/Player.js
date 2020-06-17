@@ -10,7 +10,7 @@ class Player extends Component {
   componentDidMount() {
     const deal = setTimeout(() => {
       this.props.dealCards();
-    }, 1000);
+    }, 2000);
     return () => clearTimeout(deal);
   }
 

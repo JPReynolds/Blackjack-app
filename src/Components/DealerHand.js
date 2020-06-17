@@ -6,7 +6,7 @@ const DealerHand = (props) => {
   useEffect(() => {
     const interval = setTimeout(() => {
       props.deal();
-    }, 2000);
+    }, 4000);
     return () => clearTimeout(interval);
   }, []);
 
@@ -18,7 +18,7 @@ const DealerHand = (props) => {
       ) {
         return props.deal();
       }
-    }, 8000);
+    }, 2000);
     return () => clearInterval(t);
   });
 
