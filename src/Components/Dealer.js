@@ -73,6 +73,15 @@ export default class Dealer extends Component {
       { value: 10, suit: 'C' },
     ];
 
+    if (this.props.playerHand.length === 2 && this.props.stick === true) {
+      const dealerCard = cards[Math.floor(Math.random() * cards.length)];
+      const dealerScore = this.state.dealerScore + dealerCard.value;
+      return this.setState({
+        dealersHand: [...this.state.dealersHand, dealerCard],
+        dealerScore,
+      });
+    }
+
     if (this.props.playerHand.length === 2) {
       const dealerCardOne = cards[Math.floor(Math.random() * cards.length)];
       const dealerCardTwo = cards[Math.floor(Math.random() * cards.length)];
