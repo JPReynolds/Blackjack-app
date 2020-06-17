@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
 import DealerHand from '../Components/DealerHand';
-import SetUp from '../Components/SetUp';
 
 export default class Dealer extends Component {
   state = {
     dealersHand: [],
     dealerScore: 0,
+    cardsDealt: false,
   };
   render() {
-    const { stick, playerHand, playerScore, startGame } = this.props;
+    const { stick, playerHand, playerScore } = this.props;
     const { dealersHand, dealerScore } = this.state;
 
     return (
       <div>
         <p className="score">{dealerScore}</p>
-        {startGame === true ? (
-          <DealerHand
-            hand={dealersHand}
-            stick={stick}
-            deal={this.dealCardsDealer}
-            dealerScore={dealerScore}
-            playerScore={playerScore}
-            playerHand={playerHand}
-          />
-        ) : (
-          <SetUp />
-        )}
+        <DealerHand
+          hand={dealersHand}
+          stick={stick}
+          deal={this.dealCardsDealer}
+          dealerScore={dealerScore}
+          playerScore={playerScore}
+          playerHand={playerHand}
+          newGame={this.props.newGame}
+          resetDealer={this.resetDealer}
+          cardsDealt={this.state.cardsDealt}
+        />
       </div>
     );
   }
@@ -87,7 +86,7 @@ export default class Dealer extends Component {
       const dealerCardTwo = cards[Math.floor(Math.random() * cards.length)];
       const dealersHand = [dealerCardOne, dealerCardTwo];
       const dealerScore = dealerCardOne.value + dealerCardTwo.value;
-      this.setState({ dealersHand, dealerScore });
+      this.setState({ dealersHand, dealerScore, cardsDealt: true });
     } else {
       const dealerCard = cards[Math.floor(Math.random() * cards.length)];
       const dealerScore = this.state.dealerScore + dealerCard.value;
@@ -96,5 +95,9 @@ export default class Dealer extends Component {
         dealerScore,
       });
     }
+  };
+
+  resetDealer = () => {
+    this.setState({ dealersHand: [], dealerScore: 0 });
   };
 }

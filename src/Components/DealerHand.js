@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react';
 import Winner from './Winner';
+import SetUp from './SetUp';
 
 const DealerHand = (props) => {
   useEffect(() => {
-    props.deal();
+    const interval = setTimeout(() => {
+      props.deal();
+    }, 2000);
+    return () => clearTimeout(interval);
   }, []);
 
   useEffect(() => {
@@ -14,26 +18,32 @@ const DealerHand = (props) => {
       ) {
         return props.deal();
       }
-    }, 2000);
+    }, 8000);
     return () => clearInterval(t);
   });
 
   return (
     <div>
-      {props.hand.map((card) => {
-        return (
-          <img
-            src={require(`../images/${card.value.toString() + card.suit}.jpg`)}
-            alt="card"
-            className="card"
-          />
-        );
-      })}
+      {props.cardsDealt === true &&
+        props.hand.map((card) => {
+          return (
+            <img
+              src={require(`../images/${
+                card.value.toString() + card.suit
+              }.jpg`)}
+              alt="card"
+              className="card"
+            />
+          );
+        })}
+      {props.cardsDealt === false && <SetUp />}
 
       <Winner
         dealerScore={props.dealerScore}
         playerScore={props.playerScore}
         stick={props.stick}
+        newGame={props.newGame}
+        resetDealer={props.resetDealer}
       />
     </div>
   );

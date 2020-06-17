@@ -8,40 +8,38 @@ class App extends React.Component {
   state = {
     playersHand: [],
     playerScore: 0,
-    cardsDealt: false,
     stick: false,
     startGame: false,
+    playerCardsDealt: false,
   };
 
   render() {
-    const {
-      stick,
-      playerScore,
-      playersHand,
-      cardsDealt,
-      startGame,
-    } = this.state;
+    const { stick, playerScore, playersHand, startGame } = this.state;
     return (
       <div className="App">
         <header className="App-header">
           <h1>BLACKJACK</h1>
         </header>
-        <Dealer
-          stick={stick}
-          playerScore={playerScore}
-          playerHand={playersHand}
-          startGame={startGame}
-        />
+        {startGame === true && (
+          <Dealer
+            stick={stick}
+            playerScore={playerScore}
+            playerHand={playersHand}
+            startGame={startGame}
+            newGame={this.newGame}
+          />
+        )}
         {startGame === false && (
           <StartGame dealCards={this.dealCards} startGame={this.startGame} />
         )}
 
-        {cardsDealt === true && (
+        {startGame === true && (
           <Player
             hand={playersHand}
             dealCards={this.dealCards}
             stick={this.stick}
             value={playerScore}
+            playerCardsDealt={this.state.playerCardsDealt}
           />
         )}
       </div>
@@ -117,7 +115,6 @@ class App extends React.Component {
       const playerScore = this.state.playerScore + selectedCardOne.value;
       this.setState({
         playersHand: newPlayersHand,
-        cardsDealt: true,
         playerScore,
       });
     } else {
@@ -129,14 +126,23 @@ class App extends React.Component {
       const firstScore = selectedCardOne.value + selectedCardTwo.value;
       this.setState({
         playersHand: newPlayersHand,
-        cardsDealt: true,
         playerScore: firstScore,
+        playerCardsDealt: true,
       });
     }
   };
 
   stick = () => {
     this.setState({ stick: true });
+  };
+
+  newGame = () => {
+    this.setState({
+      playersHand: [],
+      playerScore: 0,
+      stick: false,
+      startGame: false,
+    });
   };
 }
 

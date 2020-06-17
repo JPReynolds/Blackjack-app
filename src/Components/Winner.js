@@ -2,6 +2,12 @@ import React from 'react';
 
 const Winner = (props) => {
   const { playerScore, dealerScore, stick } = props;
+
+  const resetGame = () => {
+    props.newGame();
+    props.resetDealer();
+  };
+
   if (
     (stick === true && dealerScore > 21 && playerScore <= 21) ||
     (stick === true && dealerScore >= 17 && playerScore > dealerScore)
@@ -9,6 +15,7 @@ const Winner = (props) => {
     return (
       <div>
         <p>PLAYER WINS</p>
+        <button onClick={resetGame}>START GAME</button>
       </div>
     );
   }
@@ -19,6 +26,7 @@ const Winner = (props) => {
     return (
       <div>
         <p>DEALER WINS</p>
+        <button onClick={resetGame}>START GAME</button>
       </div>
     );
   }
@@ -29,19 +37,11 @@ const Winner = (props) => {
     return (
       <div>
         <p>DRAW</p>
+        <button onClick={resetGame}>START GAME</button>
       </div>
     );
   }
   return <div>£5</div>;
 };
-
-//player sticks , dealer score >= 17, dealer score > player score DEALER WINS
-//dealer score >= 17 AND dealer score <= 21, player score > 21 DEALER WINS
-
-// player sticks AND dealer score > 21 AND player score <= 21 PLAYER WINS
-// player sticks AND dealer score >= 17 AND dealer score <= 21 AND player score > dealer score PLAYER WINS
-
-// player score > 21 AND dealer score > 21 DRAW
-// stick true && dealer score >= 17 && player score = dealer score
 
 export default Winner;
