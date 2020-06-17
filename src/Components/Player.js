@@ -10,7 +10,13 @@ class Player extends Component {
     return (
       <div>
         {this.props.hand.map((card) => {
-          return (
+          return card.hasOwnProperty('face') ? (
+            <img
+              src={require(`../images/${card.face + card.suit}.jpg`)}
+              alt="card"
+              className="card"
+            />
+          ) : (
             <img
               src={require(`../images/${
                 card.value.toString() + card.suit
