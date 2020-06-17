@@ -18,29 +18,6 @@ const DealerHand = (props) => {
     return () => clearInterval(t);
   });
 
-  // componentDidUpdate(prevProps) {
-  //   if (
-  //     (this.props.stick === true || this.props.playerScore > 21) &&
-  //     this.props.dealerScore < 17
-  //   ) {
-  //     return this.props.deal();
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   const interval = () => {
-  //     if (
-  //       (this.props.stick === true || this.props.playerScore > 21) &&
-  //       this.props.dealerScore < 17
-  //     ) {
-  //       setInterval(() => {
-  //         this.props.deal();
-  //       }, 2000);
-  //       return clearInterval(interval)
-  //     }
-  //   }
-  // })
-
   return (
     <div>
       {props.hand.map((card) => {
@@ -53,7 +30,11 @@ const DealerHand = (props) => {
         );
       })}
 
-      <Winner dealerScore={props.dealerScore} playerScore={props.playerScore} />
+      <Winner
+        dealerScore={props.dealerScore}
+        playerScore={props.playerScore}
+        stick={props.stick}
+      />
     </div>
   );
 };
