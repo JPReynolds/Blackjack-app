@@ -12,7 +12,7 @@ export default class Dealer extends Component {
     const { dealersHand, dealerScore, cardsDealt } = this.state;
 
     return (
-      <div>
+      <div className="dealer">
         <p className="score">{dealerScore}</p>
         <DealerHand
           hand={dealersHand}

@@ -15,7 +15,7 @@ class Player extends Component {
   }
 
   render() {
-    const { dealCards, stick, value, playerCardsDealt, hand } = this.props;
+    const { dealCards, stick, playerCardsDealt, hand } = this.props;
     return (
       <div>
         {playerCardsDealt === true &&
@@ -38,7 +38,6 @@ class Player extends Component {
           })}
         {playerCardsDealt === false && <SetUp />}
         <StickOrTwist dealCards={dealCards} stick={stick} />
-        <p className="score">{value}</p>
       </div>
     );
   }

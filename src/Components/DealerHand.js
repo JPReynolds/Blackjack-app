@@ -31,7 +31,7 @@ const DealerHand = (props) => {
   });
 
   return (
-    <div>
+    <div className="dealerHand">
       {cardsDealt === true &&
         hand.map((card) => {
           return card.hasOwnProperty('face') ? (

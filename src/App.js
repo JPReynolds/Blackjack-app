@@ -30,9 +30,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>BLACKJACK</h1>
+          <h1>J.P Casino</h1>
           <p className="balance">Balance: {balance}</p>
         </header>
+        <h2>BLACKJACK</h2>
         {startGame === true && (
           <Dealer
             stick={stick}
@@ -58,6 +59,7 @@ class App extends React.Component {
             stick={this.stick}
             value={playerScore}
             playerCardsDealt={this.state.playerCardsDealt}
+            score={playerScore}
           />
         )}
         {startGame === false && betPlaced === false && (

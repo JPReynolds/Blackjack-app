@@ -23,8 +23,10 @@ class Wallet extends Component {
           onClick={this.props.green}
         />
         <div>
-          <p>{this.props.betValue}</p>
-          <button onClick={this.props.bet}>PLACE BET</button>
+          <p className="score">{this.props.betValue}</p>
+          <button className="bet" onClick={this.props.bet}>
+            PLACE BET
+          </button>
         </div>
       </div>
     );
