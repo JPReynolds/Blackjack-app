@@ -4,9 +4,19 @@
   height: 1000px;
 }
 
+.App-header {
+  display: flex;
+  justify-content: space-between;
+}
+
 h1 {
   font-weight: 700;
   padding-top: 50px;
+}
+
+.balance {
+  font-size: 1.5em;
+  padding: 20px;
 }
 
 .card {
@@ -27,4 +37,10 @@ button {
 .score {
   font-size: 3em;
   margin: 0 0 10px 0;
+}
+
+.chip {
+  height: 100px;
+  width: 100px;
+  margin: 30px;
 }

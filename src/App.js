@@ -3,6 +3,7 @@ import './App.css';
 import StartGame from './Components/StartGame';
 import Player from './Components/Player';
 import Dealer from './Components/Dealer';
+import Wallet from './Components/Wallet';
 
 class App extends React.Component {
   state = {
@@ -10,15 +11,27 @@ class App extends React.Component {
     playerScore: 0,
     stick: false,
     startGame: false,
+    betPlaced: false,
     playerCardsDealt: false,
+    balance: 20,
+    betValue: 0,
   };
 
   render() {
-    const { stick, playerScore, playersHand, startGame } = this.state;
+    const {
+      stick,
+      playerScore,
+      playersHand,
+      startGame,
+      balance,
+      betValue,
+      betPlaced,
+    } = this.state;
     return (
       <div className="App">
         <header className="App-header">
           <h1>BLACKJACK</h1>
+          <p className="balance">Balance: {balance}</p>
         </header>
         {startGame === true && (
           <Dealer
@@ -27,10 +40,15 @@ class App extends React.Component {
             playerHand={playersHand}
             startGame={startGame}
             newGame={this.newGame}
+            updateBalance={this.updateBalance}
           />
         )}
-        {startGame === false && (
-          <StartGame dealCards={this.dealCards} startGame={this.startGame} />
+        {startGame === false && betPlaced === true && (
+          <StartGame
+            dealCards={this.dealCards}
+            startGame={this.startGame}
+            betValue={betValue}
+          />
         )}
 
         {startGame === true && (
@@ -40,6 +58,16 @@ class App extends React.Component {
             stick={this.stick}
             value={playerScore}
             playerCardsDealt={this.state.playerCardsDealt}
+          />
+        )}
+        {startGame === false && betPlaced === false && (
+          <Wallet
+            balance={balance}
+            blue={this.handleClickBlue}
+            red={this.handleClickRed}
+            green={this.handleClickGreen}
+            bet={this.handleBet}
+            betValue={betValue}
           />
         )}
       </div>
@@ -143,7 +171,35 @@ class App extends React.Component {
       stick: false,
       startGame: false,
       playerCardsDealt: false,
+      betPlaced: false,
+      betValue: 0,
     });
+  };
+
+  handleClickBlue = () => {
+    const betValue = this.state.betValue + 1;
+    this.setState({ betValue });
+  };
+
+  handleClickRed = () => {
+    const betValue = this.state.betValue + 5;
+    this.setState({ betValue });
+  };
+
+  handleClickGreen = () => {
+    const betValue = this.state.betValue + 10;
+    this.setState({ betValue });
+  };
+
+  handleBet = () => {
+    const balance = this.state.balance - this.state.betValue;
+    this.setState({ balance, betPlaced: true });
+  };
+
+  updateBalance = () => {
+    const winnings = this.state.betValue * 2;
+    const balance = winnings + this.state.balance;
+    this.setState({ balance });
   };
 }
 

@@ -8,8 +8,8 @@ export default class Dealer extends Component {
     cardsDealt: false,
   };
   render() {
-    const { stick, playerHand, playerScore } = this.props;
-    const { dealersHand, dealerScore } = this.state;
+    const { stick, playerHand, playerScore, newGame } = this.props;
+    const { dealersHand, dealerScore, cardsDealt } = this.state;
 
     return (
       <div>
@@ -21,16 +21,17 @@ export default class Dealer extends Component {
           dealerScore={dealerScore}
           playerScore={playerScore}
           playerHand={playerHand}
-          newGame={this.props.newGame}
+          newGame={newGame}
           resetDealer={this.resetDealer}
-          cardsDealt={this.state.cardsDealt}
+          cardsDealt={cardsDealt}
+          updateBalance={this.props.updateBalance}
         />
       </div>
     );
   }
   dealCardsDealer = () => {
     const cards = [
-      // { value: 1, suit: 'H' },
+      { value: 1, suit: 'H' },
       { value: 2, suit: 'H' },
       { value: 3, suit: 'H' },
       { value: 4, suit: 'H' },
@@ -39,8 +40,11 @@ export default class Dealer extends Component {
       { value: 7, suit: 'H' },
       { value: 8, suit: 'H' },
       { value: 9, suit: 'H' },
-      { value: 10, suit: 'S' },
-      // { value: 1, suit: 'S' },
+      { value: 10, suit: 'H' },
+      { value: 10, suit: 'H', face: 'J' },
+      { value: 10, suit: 'H', face: 'Q' },
+      { value: 10, suit: 'H', face: 'K' },
+      { value: 1, suit: 'S' },
       { value: 2, suit: 'S' },
       { value: 3, suit: 'S' },
       { value: 4, suit: 'S' },
@@ -50,7 +54,10 @@ export default class Dealer extends Component {
       { value: 8, suit: 'S' },
       { value: 9, suit: 'S' },
       { value: 10, suit: 'S' },
-      // { value: 1, suit: 'D' },
+      { value: 10, suit: 'S', face: 'J' },
+      { value: 10, suit: 'S', face: 'Q' },
+      { value: 10, suit: 'S', face: 'K' },
+      { value: 1, suit: 'D' },
       { value: 2, suit: 'D' },
       { value: 3, suit: 'D' },
       { value: 4, suit: 'D' },
@@ -60,7 +67,10 @@ export default class Dealer extends Component {
       { value: 8, suit: 'D' },
       { value: 9, suit: 'D' },
       { value: 10, suit: 'D' },
-      // { value: 1, suit: 'C' },
+      { value: 10, suit: 'D', face: 'J' },
+      { value: 10, suit: 'D', face: 'Q' },
+      { value: 10, suit: 'D', face: 'K' },
+      { value: 1, suit: 'C' },
       { value: 2, suit: 'C' },
       { value: 3, suit: 'C' },
       { value: 4, suit: 'C' },
@@ -70,6 +80,9 @@ export default class Dealer extends Component {
       { value: 8, suit: 'C' },
       { value: 9, suit: 'C' },
       { value: 10, suit: 'C' },
+      { value: 10, suit: 'C', face: 'J' },
+      { value: 10, suit: 'C', face: 'Q' },
+      { value: 10, suit: 'C', face: 'K' },
     ];
 
     if (this.props.playerHand.length === 2 && this.props.stick === true) {

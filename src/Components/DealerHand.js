@@ -3,20 +3,28 @@ import Winner from './Winner';
 import SetUp from './SetUp';
 
 const DealerHand = (props) => {
+  const {
+    playerScore,
+    dealerScore,
+    cardsDealt,
+    deal,
+    stick,
+    resetDealer,
+    hand,
+    newGame,
+  } = props;
+
   useEffect(() => {
     const interval = setTimeout(() => {
-      props.deal();
+      return deal();
     }, 4000);
     return () => clearTimeout(interval);
   }, []);
 
   useEffect(() => {
     const t = setInterval(() => {
-      if (
-        (props.stick === true || props.playerScore > 21) &&
-        props.dealerScore < 17
-      ) {
-        return props.deal();
+      if ((stick === true || playerScore > 21) && dealerScore < 17) {
+        return deal();
       }
     }, 2000);
     return () => clearInterval(t);
@@ -24,9 +32,15 @@ const DealerHand = (props) => {
 
   return (
     <div>
-      {props.cardsDealt === true &&
-        props.hand.map((card) => {
-          return (
+      {cardsDealt === true &&
+        hand.map((card) => {
+          return card.hasOwnProperty('face') ? (
+            <img
+              src={require(`../images/${card.face + card.suit}.jpg`)}
+              alt="card"
+              className="card"
+            />
+          ) : (
             <img
               src={require(`../images/${
                 card.value.toString() + card.suit
@@ -36,14 +50,15 @@ const DealerHand = (props) => {
             />
           );
         })}
-      {props.cardsDealt === false && <SetUp />}
+      {cardsDealt === false && <SetUp />}
 
       <Winner
-        dealerScore={props.dealerScore}
-        playerScore={props.playerScore}
-        stick={props.stick}
-        newGame={props.newGame}
-        resetDealer={props.resetDealer}
+        dealerScore={dealerScore}
+        playerScore={playerScore}
+        stick={stick}
+        newGame={newGame}
+        resetDealer={resetDealer}
+        updateBalance={props.updateBalance}
       />
     </div>
   );

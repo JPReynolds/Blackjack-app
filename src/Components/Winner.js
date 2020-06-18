@@ -1,11 +1,12 @@
 import React from 'react';
+import PlayerWins from './PlayerWins';
 
 const Winner = (props) => {
-  const { playerScore, dealerScore, stick } = props;
+  const { playerScore, dealerScore, stick, newGame, resetDealer } = props;
 
   const resetGame = () => {
-    props.newGame();
-    props.resetDealer();
+    newGame();
+    resetDealer();
   };
 
   if (
@@ -13,10 +14,7 @@ const Winner = (props) => {
     (stick === true && dealerScore >= 17 && playerScore > dealerScore)
   ) {
     return (
-      <div>
-        <p>PLAYER WINS</p>
-        <button onClick={resetGame}>START GAME</button>
-      </div>
+      <PlayerWins resetGame={resetGame} updateBalance={props.updateBalance} />
     );
   }
   if (
@@ -26,7 +24,7 @@ const Winner = (props) => {
     return (
       <div>
         <p>DEALER WINS</p>
-        <button onClick={resetGame}>START GAME</button>
+        <button onClick={resetGame}>PLACE BETS</button>
       </div>
     );
   }
@@ -37,7 +35,7 @@ const Winner = (props) => {
     return (
       <div>
         <p>DRAW</p>
-        <button onClick={resetGame}>START GAME</button>
+        <button onClick={resetGame}>PLACE BETS</button>
       </div>
     );
   }
