@@ -30,48 +30,59 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>J.P Casino</h1>
-          <p className="balance">Balance: {balance}</p>
+          <h1 className="title">J.P Casino</h1>
+          <h2>BLACKJACK</h2>
         </header>
-        <h2>BLACKJACK</h2>
-        {startGame === true && (
-          <Dealer
-            stick={stick}
-            playerScore={playerScore}
-            playerHand={playersHand}
-            startGame={startGame}
-            newGame={this.newGame}
-            updateBalance={this.updateBalance}
-          />
-        )}
-        {startGame === false && betPlaced === true && (
-          <StartGame
-            dealCards={this.dealCards}
-            startGame={this.startGame}
-            betValue={betValue}
-          />
-        )}
+        <div className="board">
+          {startGame === true && (
+            <Dealer
+              stick={stick}
+              playerScore={playerScore}
+              playerHand={playersHand}
+              startGame={startGame}
+              newGame={this.newGame}
+              updateBalance={this.updateBalance}
+            />
+          )}
+          {startGame === false && betPlaced === true && (
+            <StartGame
+              dealCards={this.dealCards}
+              startGame={this.startGame}
+              betValue={betValue}
+            />
+          )}
 
-        {startGame === true && (
-          <Player
-            hand={playersHand}
-            dealCards={this.dealCards}
-            stick={this.stick}
-            value={playerScore}
-            playerCardsDealt={this.state.playerCardsDealt}
-            score={playerScore}
-          />
-        )}
-        {startGame === false && betPlaced === false && (
-          <Wallet
-            balance={balance}
-            blue={this.handleClickBlue}
-            red={this.handleClickRed}
-            green={this.handleClickGreen}
-            bet={this.handleBet}
-            betValue={betValue}
-          />
-        )}
+          {startGame === true && (
+            <Player
+              hand={playersHand}
+              dealCards={this.dealCards}
+              stick={this.stick}
+              value={playerScore}
+              playerCardsDealt={this.state.playerCardsDealt}
+              score={playerScore}
+            />
+          )}
+          {startGame === false && betPlaced === false && (
+            <Wallet
+              balance={balance}
+              blue={this.handleClickBlue}
+              red={this.handleClickRed}
+              green={this.handleClickGreen}
+              bet={this.handleBet}
+              betValue={betValue}
+            />
+          )}
+        </div>
+
+        <div className="balance">
+          <p className="money--header">YOUR BALANCE</p>
+          <p>£{balance}</p>
+        </div>
+        <div className="totalBet">
+          <p className="money--header">TOTAL BET</p>
+          <p>£{betValue}</p>
+        </div>
+        <footer>created by jordan</footer>
       </div>
     );
   }
