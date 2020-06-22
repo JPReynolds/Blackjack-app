@@ -79,12 +79,14 @@ button {
   border: solid 2px rgba(46, 40, 40, 0.678);
   padding: 0px 5px 0 5px;
   margin: 40px;
+  justify-content: center;
+  align-items: center;
 }
 
 .chip {
   height: 85px;
   width: 85px;
-  margin: 15px 20px 15px 20px;
+  padding: 20px;
 }
 
 figure {
@@ -128,4 +130,10 @@ footer {
   grid-area: footer;
   margin-top: 80px;
   height: 55px;
+}
+
+.target {
+  height: 200px;
+  width: 200px;
+  border: solid;
 }

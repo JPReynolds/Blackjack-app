@@ -4,6 +4,10 @@ import StartGame from './Components/StartGame';
 import Player from './Components/Player';
 import Dealer from './Components/Dealer';
 import Wallet from './Components/Wallet';
+import Target from './Components/Target';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd';
+import Chip from './Components/Chip';
 
 class App extends React.Component {
   state = {
@@ -15,6 +19,20 @@ class App extends React.Component {
     playerCardsDealt: false,
     balance: 20,
     betValue: 0,
+    items: [
+      {
+        value: 1,
+        name: 'blue',
+      },
+      {
+        value: 5,
+        name: 'red',
+      },
+      {
+        value: 10,
+        name: 'green',
+      },
+    ],
   };
 
   render() {
@@ -28,41 +46,64 @@ class App extends React.Component {
       betPlaced,
     } = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="title">J.P Casino</h1>
-          <h2>BLACKJACK</h2>
-        </header>
-        <div className="board">
-          {startGame === true && (
-            <Dealer
-              stick={stick}
-              playerScore={playerScore}
-              playerHand={playersHand}
-              startGame={startGame}
-              newGame={this.newGame}
-              updateBalance={this.updateBalance}
-            />
-          )}
-          {startGame === false && betPlaced === true && (
-            <StartGame
-              dealCards={this.dealCards}
-              startGame={this.startGame}
-              betValue={betValue}
-            />
-          )}
+      <DndProvider backend={HTML5Backend}>
+        <div className="App">
+          <header className="App-header">
+            <h1 className="title">J.P Casino</h1>
+            <h2>BLACKJACK</h2>
+          </header>
+          <div className="board">
+            {startGame === false && betPlaced === false && (
+              <div className="place-bet">
+                <h3>Place your bets...</h3>
+                <button className="bet" onClick={this.handleBet}>
+                  BET
+                </button>
+                <Target />
+                <div className="chips">
+                  {this.state.items.map((item) => {
+                    return (
+                      <Chip
+                        item={item}
+                        key={item.vale}
+                        handleDrop={(value) => {
+                          this.updateBet(value);
+                        }}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+            {startGame === true && (
+              <Dealer
+                stick={stick}
+                playerScore={playerScore}
+                playerHand={playersHand}
+                startGame={startGame}
+                newGame={this.newGame}
+                updateBalance={this.updateBalance}
+              />
+            )}
+            {startGame === false && betPlaced === true && (
+              <StartGame
+                dealCards={this.dealCards}
+                startGame={this.startGame}
+                betValue={betValue}
+              />
+            )}
 
-          {startGame === true && (
-            <Player
-              hand={playersHand}
-              dealCards={this.dealCards}
-              stick={this.stick}
-              value={playerScore}
-              playerCardsDealt={this.state.playerCardsDealt}
-              score={playerScore}
-            />
-          )}
-          {startGame === false && betPlaced === false && (
+            {startGame === true && (
+              <Player
+                hand={playersHand}
+                dealCards={this.dealCards}
+                stick={this.stick}
+                value={playerScore}
+                playerCardsDealt={this.state.playerCardsDealt}
+                score={playerScore}
+              />
+            )}
+            {/* {startGame === false && betPlaced === false && (
             <Wallet
               balance={balance}
               blue={this.handleClickBlue}
@@ -71,21 +112,27 @@ class App extends React.Component {
               bet={this.handleBet}
               betValue={betValue}
             />
-          )}
-        </div>
+          )} */}
+          </div>
 
-        <div className="balance">
-          <p className="money--header">YOUR BALANCE</p>
-          <p>£{balance}</p>
+          <div className="balance">
+            <p className="money--header">YOUR BALANCE</p>
+            <p>£{balance}</p>
+          </div>
+          <div className="totalBet">
+            <p className="money--header">TOTAL BET</p>
+            <p>£{betValue}</p>
+          </div>
+          <footer>created by jordan</footer>
         </div>
-        <div className="totalBet">
-          <p className="money--header">TOTAL BET</p>
-          <p>£{betValue}</p>
-        </div>
-        <footer>created by jordan</footer>
-      </div>
+      </DndProvider>
     );
   }
+
+  updateBet = (value) => {
+    const betValue = this.state.betValue + value;
+    this.setState({ betValue });
+  };
 
   startGame = () => {
     this.setState({
