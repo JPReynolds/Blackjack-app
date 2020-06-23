@@ -39,7 +39,7 @@ const Winner = (props) => {
       </div>
     );
   }
-  return <p className="score">{playerScore}</p>;
+  return <div></div>;
 };
 
 export default Winner;

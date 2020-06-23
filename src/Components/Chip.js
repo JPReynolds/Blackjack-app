@@ -27,13 +27,12 @@ class Chip extends Component {
     const { isDragging, connectDragSource, item } = this.props;
     const opacity = isDragging ? 0 : 1;
     return connectDragSource(
-      <div className="chip" style={{ opacity }}>
-        <img
-          src={require(`../images/${item.name}chip.png`)}
-          alt="blue chip"
-          className="chip"
-        />
-      </div>
+      <img
+        src={require(`../images/${item.name}chip.png`)}
+        alt="blue chip"
+        className="chip"
+        style={{ opacity }}
+      />
     );
   }
 }

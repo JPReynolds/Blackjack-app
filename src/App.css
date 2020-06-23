@@ -42,19 +42,25 @@ h3 {
   width: 110px;
   padding: 10px 20px 10px 20px;
   margin-bottom: 20px;
+  border-radius: 10px;
 }
 
 button {
   height: 60px;
   width: 170px;
   font-weight: 600;
-  border-radius: 30px;
+  border-radius: 10px;
   border: none;
   margin: 10px 10px 30px 10px;
-  background-color: rgba(75, 85, 75, 0.822);
+  background-color: rgba(9, 82, 9, 0.822);
+  box-shadow: 0px 1px 2px 2px rgba(34, 87, 27, 0.685);
   font-size: 1.3em;
   color: rgba(255, 255, 255, 0.863);
-  border: solid 2px rgba(46, 40, 40, 0.678);
+  outline: none;
+}
+
+button:active {
+  transform: translateY(4px);
 }
 
 .score {
@@ -65,7 +71,15 @@ button {
   border-radius: 50%;
   padding: 4px;
   margin: 15px 0 0 0;
+  place-self: center;
 }
+
+/* .dealer,
+.player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
 
 .wallet {
   align-self: end;
@@ -73,12 +87,12 @@ button {
 
 .chips {
   display: flex;
-  background-color: rgba(75, 85, 75, 0.822);
+  /* background-color: rgba(75, 85, 75, 0.822);
   border-radius: 60px;
   box-shadow: 0px 0px 5px 5px rgba(112, 111, 112, 0.116);
   border: solid 2px rgba(46, 40, 40, 0.678);
   padding: 0px 5px 0 5px;
-  margin: 40px;
+  margin: 40px; */
   justify-content: center;
   align-items: center;
 }
@@ -86,7 +100,8 @@ button {
 .chip {
   height: 85px;
   width: 85px;
-  padding: 20px;
+  margin: 20px;
+  border-radius: 50%;
 }
 
 figure {
@@ -95,6 +110,7 @@ figure {
 
 .bet {
   margin: 50px 0 50px 0;
+  align-self: center;
 }
 
 .betPlaced {
@@ -132,8 +148,19 @@ footer {
   height: 55px;
 }
 
+.place-bet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .target {
   height: 200px;
   width: 200px;
   border: solid;
+  place-self: center;
+}
+
+.rules {
+  text-align: start;
 }
