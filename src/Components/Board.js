@@ -8,7 +8,7 @@ class Board extends Component {
     startGame: false,
     items: [
       {
-        value: 1,
+        value: 10,
         name: 'blue',
       },
       {
@@ -16,7 +16,7 @@ class Board extends Component {
         name: 'red',
       },
       {
-        value: 10,
+        value: 1,
         name: 'green',
       },
     ],

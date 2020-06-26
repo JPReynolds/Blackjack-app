@@ -15,9 +15,9 @@ class App extends React.Component {
   render() {
     const { balance, betValue, betPlaced } = this.state;
     return (
-      <DndProvider backend={HTML5Backend}>
-        <div className="App">
-          <Header />
+      <div className="App">
+        <Header />
+        <DndProvider backend={HTML5Backend}>
           <Board
             betPlaced={betPlaced}
             handleBet={this.handleBet}
@@ -26,18 +26,17 @@ class App extends React.Component {
             betValue={betValue}
             newGame={this.newGame}
           />
-
-          <div className="balance">
-            <p className="money--header">YOUR BALANCE</p>
-            <p>£{balance}</p>
-          </div>
-          <div className="totalBet">
-            <p className="money--header">TOTAL BET</p>
-            <p>£{betValue}</p>
-          </div>
-          <footer>created by jordan</footer>
+        </DndProvider>
+        <div className="balance">
+          <p className="money--header">YOUR BALANCE</p>
+          <p>£{balance}</p>
         </div>
-      </DndProvider>
+        <div className="totalBet">
+          <p className="money--header">TOTAL BET</p>
+          <p>£{betValue}</p>
+        </div>
+        <footer>created by jordan</footer>
+      </div>
     );
   }
 

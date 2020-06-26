@@ -1,8 +1,7 @@
 .App {
   color: rgba(255, 255, 255, 0.932);
   text-align: center;
-  background: url('https://image.shutterstock.com/image-illustration/casino-background-260nw-208627783.jpg')
-    no-repeat center center fixed;
+  background-color: rgb(27, 143, 42);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -155,9 +154,6 @@ footer {
 }
 
 .target {
-  height: 200px;
-  width: 200px;
-  border: solid;
   place-self: center;
 }
 

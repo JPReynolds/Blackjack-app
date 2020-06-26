@@ -1,40 +1,31 @@
 import React, { Component } from 'react';
-import { DragSource } from 'react-dnd';
+import { useDrag } from 'react-dnd';
+import { ItemTypes } from '../ItemTypes';
 
-const itemSource = {
-  beginDrag(props) {
-    console.log('dragging');
-    return props.item;
-  },
-  endDrag(props, monitor, component) {
-    // if (!monitor.didDrop()) {
-    //   return;
-    // }
-    return props.handleDrop(props.item.value);
-  },
+const Chip = ({ name, value, handleDrop }) => {
+  const [{ isDragging }, drag] = useDrag({
+    item: { name, type: ItemTypes.CHIP },
+    end: (item, monitor) => {
+      const dropResult = monitor.getDropResult();
+      if (item && dropResult) {
+        return handleDrop(value);
+      }
+    },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+  const opacity = isDragging ? 0.4 : 1;
+
+  return (
+    <img
+      src={require(`../images/${name}chip.png`)}
+      alt="blue chip"
+      className="chip"
+      ref={drag}
+      style={{ opacity }}
+    />
+  );
 };
 
-function collect(connect, monitor) {
-  return {
-    connectDragSource: connect.dragSource(),
-    collectDragPreview: connect.dragPreview(),
-    isDragging: monitor.isDragging(),
-  };
-}
-
-class Chip extends Component {
-  render() {
-    const { isDragging, connectDragSource, item } = this.props;
-    const opacity = isDragging ? 0 : 1;
-    return connectDragSource(
-      <img
-        src={require(`../images/${item.name}chip.png`)}
-        alt="blue chip"
-        className="chip"
-        style={{ opacity }}
-      />
-    );
-  }
-}
-
-export default DragSource('chip', itemSource, collect)(Chip);
+export default Chip;

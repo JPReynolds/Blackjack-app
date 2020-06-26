@@ -19,7 +19,8 @@ const PlaceBets = (props) => {
         {props.items.map((item) => {
           return (
             <Chip
-              item={item}
+              name={item.name}
+              value={item.value}
               key={item.vale}
               handleDrop={(value) => {
                 props.updateBet(value);
