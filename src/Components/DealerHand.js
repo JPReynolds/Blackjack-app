@@ -33,12 +33,13 @@ const DealerHand = (props) => {
   return (
     <div className="dealerHand">
       {cardsDealt === true &&
-        hand.map((card) => {
+        hand.map((card, index) => {
           return card.hasOwnProperty('face') ? (
             <img
               src={require(`../images/${card.face + card.suit}.jpg`)}
               alt="card"
               className="card"
+              key={index}
             />
           ) : (
             <img
@@ -47,6 +48,7 @@ const DealerHand = (props) => {
               }.jpg`)}
               alt="card"
               className="card"
+              key={index}
             />
           );
         })}
@@ -59,6 +61,7 @@ const DealerHand = (props) => {
         newGame={newGame}
         resetDealer={resetDealer}
         updateBalance={props.updateBalance}
+        setWinner={props.setWinner}
       />
     </div>
   );

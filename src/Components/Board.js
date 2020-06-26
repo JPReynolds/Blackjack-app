@@ -24,6 +24,7 @@ class Board extends Component {
     playerScore: 0,
     playerCardsDealt: false,
     stick: false,
+    won: false,
   };
 
   render() {
@@ -62,6 +63,7 @@ class Board extends Component {
             startGame={startGame}
             newGame={newGame}
             updateBalance={updateBalance}
+            setWinner={this.setWinner}
           />
         )}
         {startGame === false && betPlaced === true && (
@@ -76,15 +78,21 @@ class Board extends Component {
           <Player
             hand={playersHand}
             dealCards={this.dealCards}
-            stick={this.Stick}
+            stickPressed={this.stickPressed}
             value={playerScore}
             playerCardsDealt={playerCardsDealt}
             playerScore={playerScore}
+            won={this.state.won}
           />
         )}
       </div>
     );
   }
+
+  setWinner = () => {
+    this.setState({ won: true });
+  };
+
   beginGame = () => {
     this.setState({
       startGame: true,
@@ -171,7 +179,7 @@ class Board extends Component {
     }
   };
 
-  Stick = () => {
+  stickPressed = () => {
     this.setState({ stick: true });
   };
 }

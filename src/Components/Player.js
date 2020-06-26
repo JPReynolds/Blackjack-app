@@ -17,7 +17,7 @@ class Player extends Component {
   render() {
     const {
       dealCards,
-      stick,
+      stickPressed,
       playerCardsDealt,
       hand,
       playerScore,
@@ -26,12 +26,13 @@ class Player extends Component {
       <div className="player">
         <div>
           {playerCardsDealt === true &&
-            hand.map((card) => {
+            hand.map((card, index) => {
               return card.hasOwnProperty('face') ? (
                 <img
                   src={require(`../images/${card.face + card.suit}.jpg`)}
                   alt="card"
                   className="card"
+                  key={index}
                 />
               ) : (
                 <img
@@ -40,13 +41,16 @@ class Player extends Component {
                   }.jpg`)}
                   alt="card"
                   className="card"
+                  key={index}
                 />
               );
             })}
         </div>
         {playerCardsDealt === false && <SetUp />}
         <p className="score">{playerScore}</p>
-        <StickOrTwist dealCards={dealCards} stick={stick} />
+        {this.props.won === false && (
+          <StickOrTwist dealCards={dealCards} stick={stickPressed} />
+        )}
       </div>
     );
   }

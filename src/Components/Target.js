@@ -23,7 +23,7 @@ const Target = () => {
   });
 
   const isActive = canDrop && isOver;
-  let backgroundColor = '#222';
+  let backgroundColor = 'rgba(85, 81, 81, 0.493)';
   if (isActive) {
     backgroundColor = 'darkgreen';
   } else if (canDrop) {
@@ -32,7 +32,11 @@ const Target = () => {
 
   return (
     <div className="target" ref={drop} style={{ ...style, backgroundColor }}>
-      {isActive ? 'Release to drop' : 'Drag a box here'}
+      {isActive ? 'Release to drop' : 'Drag your chips here'}
+      <img
+        className="bag"
+        src="https://icons.iconarchive.com/icons/google/noto-emoji-objects/512/62876-money-bag-icon.png"
+      />
     </div>
   );
 };

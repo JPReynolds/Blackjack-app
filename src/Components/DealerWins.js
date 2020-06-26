@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 
-class PlayerWins extends Component {
+class DealerWins extends Component {
   componentDidMount() {
-    this.props.updateBalance();
     this.props.setWinner();
   }
 
   render() {
     return (
       <div>
-        <p>PLAYER WINS</p>
+        <p>DEALER WINS</p>
         <button className="btn" onClick={this.props.resetGame}>
           PLACE BETS
         </button>
@@ -18,4 +17,4 @@ class PlayerWins extends Component {
   }
 }
 
-export default PlayerWins;
+export default DealerWins;

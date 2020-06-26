@@ -7,8 +7,12 @@ const StickOrTwist = (props) => {
 
   return (
     <div>
-      <button onClick={onClickStick}>STICK</button>
-      <button onClick={props.dealCards}>TWIST</button>
+      <button className="btn" onClick={onClickStick}>
+        STICK
+      </button>
+      <button className="btn" onClick={props.dealCards}>
+        TWIST
+      </button>
     </div>
   );
 };

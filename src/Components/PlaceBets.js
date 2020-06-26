@@ -5,7 +5,7 @@ import Chip from '../Components/Chip';
 const PlaceBets = (props) => {
   return (
     <div className="place-bet">
-      <h3>Place your bets...</h3>
+      <h3 className="place-bet--title">Place your bets...</h3>
       <ul className="rules">
         <li>You must be 18 or over to play</li>
         <li>Drag the chips into the bucket to increase your bet</li>
@@ -21,7 +21,7 @@ const PlaceBets = (props) => {
             <Chip
               name={item.name}
               value={item.value}
-              key={item.vale}
+              key={item.value}
               handleDrop={(value) => {
                 props.updateBet(value);
               }}

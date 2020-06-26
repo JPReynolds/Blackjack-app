@@ -1,5 +1,6 @@
 .App {
   color: rgba(255, 255, 255, 0.932);
+  font-family: Comic Sans, Comic Sans MS, cursive;
   text-align: center;
   background-color: rgb(27, 143, 42);
   -webkit-background-size: cover;
@@ -8,7 +9,7 @@
   background-size: cover;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto 600px 1fr auto;
+  grid-template-rows: auto 600px auto auto;
   grid-template-areas: 'header header header' 'board board board' 'balance chips bet' 'footer footer footer';
 }
 
@@ -18,6 +19,8 @@
   justify-content: space-between;
   background-color: rgba(5, 80, 5, 0.842);
   border-bottom: solid 1px rgba(5, 80, 5, 0.849);
+  box-shadow: 0px 1px 2px 2px rgba(19, 44, 15, 0.685);
+  letter-spacing: 0.5em;
 }
 
 h1,
@@ -26,14 +29,23 @@ h2 {
   margin: 15px;
 }
 
+.title--start {
+  font-size: 3em;
+  letter-spacing: 0.05em;
+}
+
 h3 {
   font-size: 2em;
   margin-top: 65px;
 }
 
 .balance {
-  font-size: 1.5em;
+  font-size: 2em;
   margin: 15px;
+}
+
+.money {
+  margin: 0;
 }
 
 .card {
@@ -44,18 +56,36 @@ h3 {
   border-radius: 10px;
 }
 
-button {
-  height: 60px;
-  width: 170px;
+.bet {
+  height: 90px;
+  width: 90px;
   font-weight: 600;
-  border-radius: 10px;
+  border-radius: 100%;
   border: none;
   margin: 10px 10px 30px 10px;
-  background-color: rgba(9, 82, 9, 0.822);
-  box-shadow: 0px 1px 2px 2px rgba(34, 87, 27, 0.685);
+  background-color: rgba(189, 26, 26, 0.822);
+  box-shadow: 0px 1px 2px 2px rgba(19, 44, 15, 0.685);
   font-size: 1.3em;
   color: rgba(255, 255, 255, 0.863);
   outline: none;
+  font-family: Comic Sans, Comic Sans MS, cursive;
+  letter-spacing: 0.2em;
+}
+
+.btn {
+  font-family: Comic Sans, Comic Sans MS, cursive;
+  color: white;
+  font-size: 1.1em;
+  letter-spacing: 0.1em;
+  font-weight: 650;
+  height: 50px;
+  width: 175px;
+  margin: 10px 15px 30px 15px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 1px 2px 2px rgba(19, 44, 15, 0.685);
+  background-color: rgb(85, 81, 81, 0.493);
 }
 
 button:active {
@@ -101,6 +131,7 @@ button:active {
   width: 85px;
   margin: 20px;
   border-radius: 50%;
+  box-shadow: 0px 1px 2px 2px rgba(19, 44, 15, 0.685);
 }
 
 figure {
@@ -131,7 +162,11 @@ figure {
 
 .money--header {
   color: rgb(219, 201, 34);
-  margin-top: 0;
+  margin: 0;
+}
+
+.money {
+  font-size: 1.5em;
 }
 
 .totalBet {
@@ -148,15 +183,49 @@ footer {
 }
 
 .place-bet {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: 'betTitle bet' 'rules target' 'chips target';
+}
+
+.place-bet--title {
+  grid-area: betTitle;
+  letter-spacing: 0.1em;
+}
+
+.bet {
+  grid-area: bet;
+  justify-self: center;
+}
+
+.rules {
+  grid-area: rules;
+  font-size: 1.5em;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.chips {
+  grid-area: chips;
 }
 
 .target {
+  grid-area: target;
+  margin-bottom: 30px;
+  border-radius: 25%;
+  box-shadow: 0px 1px 2px 2px rgba(19, 44, 15, 0.685);
   place-self: center;
 }
 
 .rules {
   text-align: start;
+}
+
+.bag {
+  height: 160px;
+  width: 160px;
+  padding-top: 10px;
 }

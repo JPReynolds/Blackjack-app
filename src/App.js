@@ -29,11 +29,11 @@ class App extends React.Component {
         </DndProvider>
         <div className="balance">
           <p className="money--header">YOUR BALANCE</p>
-          <p>£{balance}</p>
+          <p className="money">£{balance}</p>
         </div>
         <div className="totalBet">
           <p className="money--header">TOTAL BET</p>
-          <p>£{betValue}</p>
+          <p className="money">£{betValue}</p>
         </div>
         <footer>created by jordan</footer>
       </div>

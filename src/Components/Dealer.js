@@ -25,6 +25,7 @@ export default class Dealer extends Component {
           resetDealer={this.resetDealer}
           cardsDealt={cardsDealt}
           updateBalance={this.props.updateBalance}
+          setWinner={this.props.setWinner}
         />
       </div>
     );
