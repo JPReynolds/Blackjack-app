@@ -37,6 +37,7 @@ class Board extends Component {
           value={playerScore}
           playerCardsDealt={playerCardsDealt}
           playerScore={playerScore}
+          stick={stick}
         />
       </div>
     );

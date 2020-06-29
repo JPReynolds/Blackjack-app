@@ -21,6 +21,7 @@ class Player extends Component {
       playerCardsDealt,
       hand,
       playerScore,
+      stick,
     } = this.props;
     return (
       <div className="player">
@@ -48,7 +49,7 @@ class Player extends Component {
             })}
         </div>
         {playerCardsDealt === false && <SetUp />}
-        {(this.props.won === false || this.props.stick === false) && (
+        {(this.props.won === false || stick === false) && (
           <StickOrTwist dealCards={dealCards} stick={stickPressed} />
         )}
       </div>
