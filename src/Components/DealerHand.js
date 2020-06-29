@@ -32,27 +32,29 @@ const DealerHand = (props) => {
 
   return (
     <div className="dealerHand">
-      {cardsDealt === true &&
-        hand.map((card, index) => {
-          return card.hasOwnProperty('face') ? (
-            <img
-              src={require(`../images/${card.face + card.suit}.jpg`)}
-              alt="card"
-              className="card"
-              key={index}
-            />
-          ) : (
-            <img
-              src={require(`../images/${
-                card.value.toString() + card.suit
-              }.jpg`)}
-              alt="card"
-              className="card"
-              key={index}
-            />
-          );
-        })}
-      {cardsDealt === false && <SetUp />}
+      <div className="dealerCards">
+        {cardsDealt === true &&
+          hand.map((card, index) => {
+            return card.hasOwnProperty('face') ? (
+              <img
+                src={require(`../images/${card.face + card.suit}.jpg`)}
+                alt="card"
+                className="card"
+                key={index}
+              />
+            ) : (
+              <img
+                src={require(`../images/${
+                  card.value.toString() + card.suit
+                }.jpg`)}
+                alt="card"
+                className="card"
+                key={index}
+              />
+            );
+          })}
+        {cardsDealt === false && <SetUp />}
+      </div>
 
       <Winner
         dealerScore={dealerScore}

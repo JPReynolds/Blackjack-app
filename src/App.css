@@ -31,7 +31,7 @@ h2 {
 
 .title--start {
   font-size: 3em;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
 }
 
 h3 {
@@ -49,8 +49,8 @@ h3 {
 }
 
 .card {
-  height: 150px;
-  width: 110px;
+  height: 140px;
+  width: 100px;
   padding: 10px 20px 10px 20px;
   margin-bottom: 20px;
   border-radius: 10px;
@@ -94,21 +94,13 @@ button:active {
 
 .score {
   font-size: 1.2em;
-  text-align: center;
   background-color: rgb(163, 13, 13);
   width: 25px;
   border-radius: 50%;
   padding: 4px;
   margin: 15px 0 0 0;
-  place-self: center;
+  align-self: center;
 }
-
-/* .dealer,
-.player {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-} */
 
 .wallet {
   align-self: end;
@@ -116,12 +108,6 @@ button:active {
 
 .chips {
   display: flex;
-  /* background-color: rgba(75, 85, 75, 0.822);
-  border-radius: 60px;
-  box-shadow: 0px 0px 5px 5px rgba(112, 111, 112, 0.116);
-  border: solid 2px rgba(46, 40, 40, 0.678);
-  padding: 0px 5px 0 5px;
-  margin: 40px; */
   justify-content: center;
   align-items: center;
 }
@@ -149,8 +135,24 @@ figure {
 }
 
 .board {
+  height: 100%;
   grid-area: board;
   place-self: center;
+  display: grid;
+  align-items: center;
+}
+
+.startGame {
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+}
+
+.dealer {
+  display: flex;
+  flex-direction: column;
 }
 
 .balance {
@@ -178,7 +180,7 @@ figure {
 
 footer {
   grid-area: footer;
-  margin-top: 80px;
+  margin-top: 10px;
   height: 55px;
 }
 

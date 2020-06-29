@@ -55,6 +55,13 @@ class Board extends Component {
             items={items}
           />
         )}
+        {startGame === false && betPlaced === true && (
+          <StartGame
+            dealCards={this.dealCards}
+            beginGame={this.beginGame}
+            betValue={betValue}
+          />
+        )}
         {startGame === true && (
           <Dealer
             stick={stick}
@@ -66,13 +73,6 @@ class Board extends Component {
             setWinner={this.setWinner}
           />
         )}
-        {startGame === false && betPlaced === true && (
-          <StartGame
-            dealCards={this.dealCards}
-            beginGame={this.beginGame}
-            betValue={betValue}
-          />
-        )}
 
         {startGame === true && (
           <Player
@@ -82,7 +82,7 @@ class Board extends Component {
             value={playerScore}
             playerCardsDealt={playerCardsDealt}
             playerScore={playerScore}
-            won={this.state.won}
+            stick={stick}
           />
         )}
       </div>

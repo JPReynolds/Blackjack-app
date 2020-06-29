@@ -24,7 +24,8 @@ class Player extends Component {
     } = this.props;
     return (
       <div className="player">
-        <div>
+        <div className="score">{playerScore}</div>
+        <div className="playerCards">
           {playerCardsDealt === true &&
             hand.map((card, index) => {
               return card.hasOwnProperty('face') ? (
@@ -47,8 +48,7 @@ class Player extends Component {
             })}
         </div>
         {playerCardsDealt === false && <SetUp />}
-        <p className="score">{playerScore}</p>
-        {this.props.won === false && (
+        {(this.props.won === false || this.props.stick === false) && (
           <StickOrTwist dealCards={dealCards} stick={stickPressed} />
         )}
       </div>

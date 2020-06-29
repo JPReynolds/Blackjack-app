@@ -13,7 +13,7 @@ export default class Dealer extends Component {
 
     return (
       <div className="dealer">
-        <p className="score">{dealerScore}</p>
+        <div className="score">{dealerScore}</div>
         <DealerHand
           hand={dealersHand}
           stick={stick}
