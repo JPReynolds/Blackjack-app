@@ -4,57 +4,47 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 import Header from './Components/Header';
 import Board from './Components/Board';
+import PlaceBets from './Components/PlaceBets';
+import StartGame from './Components/StartGame';
+import { Router } from '@reach/router';
 
 class App extends React.Component {
   state = {
-    betPlaced: false,
     balance: 20,
     betValue: 0,
+    betPlaced: false,
   };
 
   render() {
-    const { balance, betValue, betPlaced } = this.state;
     return (
       <div className="App">
         <Header />
         <DndProvider backend={HTML5Backend}>
-          <Board
-            betPlaced={betPlaced}
-            handleBet={this.handleBet}
-            updateBet={this.updateBet}
-            updateBalance={this.updateBalance}
-            betValue={betValue}
-            newGame={this.newGame}
-          />
+          <Router>
+            <PlaceBets
+              path="/"
+              handleBet={this.handleBet}
+              updateBet={this.updateBet}
+            />
+            <StartGame path="/startgame" betValue={this.state.betValue} />
+            <Board path="/game" updateBalance={this.updateBalance} />
+          </Router>
         </DndProvider>
         <div className="balance">
           <p className="money--header">YOUR BALANCE</p>
-          <p className="money">£{balance}</p>
+          <p className="money">£{this.state.balance}</p>
         </div>
         <div className="totalBet">
           <p className="money--header">TOTAL BET</p>
-          <p className="money">£{betValue}</p>
+          <p className="money">£{this.state.betValue}</p>
         </div>
         <footer>created by jordan</footer>
       </div>
     );
   }
-
   updateBet = (value) => {
     const betValue = this.state.betValue + value;
     this.setState({ betValue });
-  };
-
-  newGame = () => {
-    this.setState({
-      playersHand: [],
-      playerScore: 0,
-      stick: false,
-      startGame: false,
-      playerCardsDealt: false,
-      betPlaced: false,
-      betValue: 0,
-    });
   };
 
   handleBet = () => {

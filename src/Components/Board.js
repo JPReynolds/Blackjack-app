@@ -1,25 +1,9 @@
 import React, { Component } from 'react';
-import StartGame from '../Components/StartGame';
 import Player from '../Components/Player';
 import Dealer from '../Components/Dealer';
-import PlaceBets from './PlaceBets';
+
 class Board extends Component {
   state = {
-    startGame: false,
-    items: [
-      {
-        value: 10,
-        name: 'blue',
-      },
-      {
-        value: 5,
-        name: 'red',
-      },
-      {
-        value: 1,
-        name: 'green',
-      },
-    ],
     playersHand: [],
     playerScore: 0,
     playerCardsDealt: false,
@@ -29,17 +13,7 @@ class Board extends Component {
 
   render() {
     const {
-      betPlaced,
-      handleBet,
-      updateBet,
-      newGame,
-      updateBalance,
-      betValue,
-    } = this.props;
-
-    const {
       startGame,
-      items,
       playersHand,
       playerScore,
       playerCardsDealt,
@@ -48,55 +22,28 @@ class Board extends Component {
 
     return (
       <div className="board">
-        {startGame === false && betPlaced === false && (
-          <PlaceBets
-            handleBet={handleBet}
-            updateBet={updateBet}
-            items={items}
-          />
-        )}
-        {startGame === false && betPlaced === true && (
-          <StartGame
-            dealCards={this.dealCards}
-            beginGame={this.beginGame}
-            betValue={betValue}
-          />
-        )}
-        {startGame === true && (
-          <Dealer
-            stick={stick}
-            playerScore={playerScore}
-            playerHand={playersHand}
-            startGame={startGame}
-            newGame={newGame}
-            updateBalance={updateBalance}
-            setWinner={this.setWinner}
-          />
-        )}
-
-        {startGame === true && (
-          <Player
-            hand={playersHand}
-            dealCards={this.dealCards}
-            stickPressed={this.stickPressed}
-            value={playerScore}
-            playerCardsDealt={playerCardsDealt}
-            playerScore={playerScore}
-            stick={stick}
-          />
-        )}
+        <Dealer
+          stick={stick}
+          playerScore={playerScore}
+          playerHand={playersHand}
+          startGame={startGame}
+          updateBalance={this.props.updateBalance}
+          setWinner={this.setWinner}
+        />
+        <Player
+          hand={playersHand}
+          dealCards={this.dealCards}
+          stickPressed={this.stickPressed}
+          value={playerScore}
+          playerCardsDealt={playerCardsDealt}
+          playerScore={playerScore}
+        />
       </div>
     );
   }
 
   setWinner = () => {
     this.setState({ won: true });
-  };
-
-  beginGame = () => {
-    this.setState({
-      startGame: true,
-    });
   };
 
   dealCards = () => {

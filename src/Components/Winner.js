@@ -26,7 +26,7 @@ const Winner = (props) => {
     (stick === true && dealerScore >= 17 && dealerScore > playerScore) ||
     (dealerScore >= 17 && dealerScore <= 21 && playerScore > 21)
   ) {
-    return <DealerWins />;
+    return <DealerWins setWinner={props.setWinner} />;
   }
   if (
     (playerScore > 21 && dealerScore > 21) ||

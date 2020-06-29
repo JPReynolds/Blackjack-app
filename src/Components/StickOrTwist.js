@@ -1,13 +1,9 @@
 import React from 'react';
 
 const StickOrTwist = (props) => {
-  const onClickStick = () => {
-    return props.stick();
-  };
-
   return (
     <div>
-      <button className="btn" onClick={onClickStick}>
+      <button className="btn" onClick={() => props.stick()}>
         STICK
       </button>
       <button className="btn" onClick={props.dealCards}>

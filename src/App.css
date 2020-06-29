@@ -7,10 +7,8 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto 600px auto auto;
-  grid-template-areas: 'header header header' 'board board board' 'balance chips bet' 'footer footer footer';
+  display: flex;
+  flex-direction: column;
 }
 
 .App-header {
@@ -135,22 +133,21 @@ figure {
 }
 
 .board {
-  height: 100%;
-  grid-area: board;
-  place-self: center;
+  height: 1000px;
   display: grid;
-  align-items: center;
-}
-
-.startGame {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: 'dealer dealer dealer' 'player player player' 'balance . bet';
 }
 
 .player {
+  grid-area: player;
   display: flex;
   flex-direction: column;
 }
 
 .dealer {
+  grid-area: dealer;
   display: flex;
   flex-direction: column;
 }

@@ -34,6 +34,7 @@ const Target = () => {
     <div className="target" ref={drop} style={{ ...style, backgroundColor }}>
       {isActive ? 'Release to drop' : 'Drag your chips here'}
       <img
+        alt="money bag"
         className="bag"
         src="https://icons.iconarchive.com/icons/google/noto-emoji-objects/512/62876-money-bag-icon.png"
       />
