@@ -24,13 +24,13 @@ class PlaceBets extends Component {
   render() {
     return (
       <div className="place-bet">
-        <h3 className="place-bet--title">Place your bets...</h3>
         <ul className="rules">
+          <p className="house-rules">House rules</p>
           <li>You must be 18 or over to play</li>
           <li>Drag the chips into the bucket to increase your bet</li>
           <li>Happy betting!</li>
         </ul>
-        <Link to="/startgame">
+        <Link to="/startgame" className="link--bet">
           <button className="bet" onClick={this.props.handleBet}>
             BET
           </button>

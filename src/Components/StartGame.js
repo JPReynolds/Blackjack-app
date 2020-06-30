@@ -6,8 +6,8 @@ class StartGame extends Component {
     return (
       <div className="startGame">
         <h2 className="title--start">£{this.props.betValue} bet placed!</h2>
-        <Link to="/game" className="btn">
-          START GAME
+        <Link to="/game">
+          <button className="btn">START GAME</button>
         </Link>
       </div>
     );

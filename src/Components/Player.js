@@ -49,7 +49,7 @@ class Player extends Component {
             })}
         </div>
         {playerCardsDealt === false && <SetUp />}
-        {(this.props.won === false || stick === false) && (
+        {(playerScore > 21 || stick === false) && (
           <StickOrTwist dealCards={dealCards} stick={stickPressed} />
         )}
       </div>

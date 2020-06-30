@@ -16,27 +16,37 @@ class App extends React.Component {
   };
 
   render() {
+    const { betValue, balance } = this.state;
+
     return (
       <div className="App">
         <Header />
-        <DndProvider backend={HTML5Backend}>
-          <Router>
-            <PlaceBets
-              path="/"
-              handleBet={this.handleBet}
-              updateBet={this.updateBet}
-            />
-            <StartGame path="/startgame" betValue={this.state.betValue} />
-            <Board path="/game" updateBalance={this.updateBalance} />
-          </Router>
-        </DndProvider>
-        <div className="balance">
-          <p className="money--header">YOUR BALANCE</p>
-          <p className="money">£{this.state.balance}</p>
+        <div className="game">
+          <DndProvider backend={HTML5Backend}>
+            <Router>
+              <PlaceBets
+                path="/"
+                handleBet={this.handleBet}
+                updateBet={this.updateBet}
+              />
+              <StartGame path="/startgame" betValue={betValue} />
+              <Board
+                path="/game"
+                updateBalance={this.updateBalance}
+                resetBetValue={this.resetBetValue}
+              />
+            </Router>
+          </DndProvider>
         </div>
-        <div className="totalBet">
-          <p className="money--header">TOTAL BET</p>
-          <p className="money">£{this.state.betValue}</p>
+        <div className="bank">
+          <div className="bank__balance">
+            <p className="bank--header">YOUR BALANCE</p>
+            <p className="bank--money">£{balance}</p>
+          </div>
+          <div className="bank__totalBet">
+            <p className="bank--header">TOTAL BET</p>
+            <p className="bank--money">£{betValue}</p>
+          </div>
         </div>
         <footer>created by jordan</footer>
       </div>
@@ -56,6 +66,10 @@ class App extends React.Component {
     const winnings = this.state.betValue * 2;
     const balance = winnings + this.state.balance;
     this.setState({ balance });
+  };
+
+  resetBetValue = () => {
+    this.setState({ betValue: 0, betPlaced: false });
   };
 }
 

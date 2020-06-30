@@ -1,17 +1,70 @@
+@media only screen and (max-width: 600px) {
+  .place-bet {
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  h1,
+  h2 {
+    font-weight: 700 !important;
+    margin: 15px !important;
+    font-size: 1em !important;
+    align-self: center !important;
+  }
+
+  h3 {
+    font-size: 1em !important;
+    margin-top: 20px !important;
+  }
+
+  .rules {
+    font-size: 1em !important;
+    line-height: 10px !important;
+  }
+
+  .bet {
+    height: 90px !important;
+    width: 90px !important;
+  }
+
+  .link--bet {
+    margin-bottom: 40px !important;
+  }
+
+  .bank {
+    font-size: 0.8em !important;
+  }
+
+  .chip {
+    height: 60px !important;
+    width: 60px !important;
+  }
+
+  .card {
+    height: 110px !important;
+    width: 80px !important;
+    padding: 2px !important;
+    margin-top: 10px !important;
+  }
+
+  .btn {
+    margin: 5px !important;
+  }
+}
+
 .App {
   color: rgba(255, 255, 255, 0.932);
   font-family: Comic Sans, Comic Sans MS, cursive;
   text-align: center;
   background-color: rgb(27, 143, 42);
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 6fr 1fr auto;
+  grid-template-areas: 'header' 'game' 'bank' 'footer';
 }
 
-.App-header {
+header {
   grid-area: header;
   display: flex;
   justify-content: space-between;
@@ -25,11 +78,7 @@ h1,
 h2 {
   font-weight: 700;
   margin: 15px;
-}
-
-.title--start {
-  font-size: 3em;
-  letter-spacing: 0.1em;
+  font-size: 1.5em;
 }
 
 h3 {
@@ -37,13 +86,125 @@ h3 {
   margin-top: 65px;
 }
 
-.balance {
-  font-size: 2em;
-  margin: 15px;
+.game {
+  grid-area: game;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.money {
+.bank {
+  grid-area: bank;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.bank div {
+  font-size: 1.5em;
+  margin: 0px 30px 0 30px;
+  font-weight: 600;
+}
+
+.bank--header {
+  color: rgb(219, 201, 34);
   margin: 0;
+}
+
+.bank--money {
+  font-size: 1.5em;
+  margin: 5px;
+}
+
+footer {
+  grid-area: footer;
+  margin-top: 10px;
+  height: 55px;
+}
+
+.place-bet {
+  margin: 40px 100px 40px 100px;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: 'rules target' 'rules target' 'bet chips';
+}
+
+.place-bet--title {
+  grid-area: betTitle;
+  letter-spacing: 0.1em;
+  margin: 10px;
+  align-self: center;
+}
+
+.link--bet {
+  align-self: center;
+  justify-self: center;
+}
+
+.bet {
+  grid-area: bet;
+
+  height: 120px;
+  width: 120px;
+  font-weight: 600;
+  border-radius: 100%;
+  border: none;
+  margin: 10px 10px 10px 10px;
+  background-color: rgba(189, 26, 26, 0.822);
+  box-shadow: 0px 1px 2px 2px rgba(19, 44, 15, 0.685);
+  font-size: 1.6em;
+  color: rgba(255, 255, 255, 0.863);
+  outline: none;
+  font-family: Comic Sans, Comic Sans MS, cursive;
+  letter-spacing: 0.2em;
+}
+
+.house-rules {
+  font-weight: 600;
+  font-size: 1.5em;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+
+.rules {
+  grid-area: rules;
+  font-size: 1.5em;
+  text-align: start;
+}
+
+li {
+  margin-bottom: 10px;
+  line-height: 50px;
+}
+
+.chips {
+  grid-area: chips;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.target {
+  grid-area: target;
+  margin-bottom: 30px;
+  border-radius: 25%;
+  box-shadow: 0px 1px 2px 2px rgba(19, 44, 15, 0.685);
+  place-self: center;
+}
+
+.bag {
+  height: 160px;
+  width: 160px;
+  padding-top: 10px;
+}
+
+.chip {
+  height: 85px;
+  width: 85px;
+  margin: 20px;
+  border-radius: 50%;
+  box-shadow: 0px 1px 2px 2px rgba(19, 44, 15, 0.685);
 }
 
 .card {
@@ -54,20 +215,9 @@ h3 {
   border-radius: 10px;
 }
 
-.bet {
-  height: 90px;
-  width: 90px;
-  font-weight: 600;
-  border-radius: 100%;
-  border: none;
-  margin: 10px 10px 30px 10px;
-  background-color: rgba(189, 26, 26, 0.822);
-  box-shadow: 0px 1px 2px 2px rgba(19, 44, 15, 0.685);
-  font-size: 1.3em;
-  color: rgba(255, 255, 255, 0.863);
-  outline: none;
-  font-family: Comic Sans, Comic Sans MS, cursive;
-  letter-spacing: 0.2em;
+.title--start {
+  font-size: 3em;
+  letter-spacing: 0.1em;
 }
 
 .btn {
@@ -104,27 +254,8 @@ button:active {
   align-self: end;
 }
 
-.chips {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.chip {
-  height: 85px;
-  width: 85px;
-  margin: 20px;
-  border-radius: 50%;
-  box-shadow: 0px 1px 2px 2px rgba(19, 44, 15, 0.685);
-}
-
 figure {
   margin: 0;
-}
-
-.bet {
-  margin: 50px 0 50px 0;
-  align-self: center;
 }
 
 .betPlaced {
@@ -133,7 +264,6 @@ figure {
 }
 
 .board {
-  height: 1000px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto auto auto;
@@ -150,81 +280,4 @@ figure {
   grid-area: dealer;
   display: flex;
   flex-direction: column;
-}
-
-.balance {
-  grid-area: balance;
-  font-size: 1.5em;
-  margin: 0px 0 20px 0;
-  font-weight: 600;
-}
-
-.money--header {
-  color: rgb(219, 201, 34);
-  margin: 0;
-}
-
-.money {
-  font-size: 1.5em;
-}
-
-.totalBet {
-  grid-area: bet;
-  font-size: 1.5em;
-  margin: 0px 0 20px 0;
-  font-weight: 600;
-}
-
-footer {
-  grid-area: footer;
-  margin-top: 10px;
-  height: 55px;
-}
-
-.place-bet {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto auto;
-  grid-template-areas: 'betTitle bet' 'rules target' 'chips target';
-}
-
-.place-bet--title {
-  grid-area: betTitle;
-  letter-spacing: 0.1em;
-}
-
-.bet {
-  grid-area: bet;
-  justify-self: center;
-}
-
-.rules {
-  grid-area: rules;
-  font-size: 1.5em;
-}
-
-li {
-  margin-bottom: 10px;
-}
-
-.chips {
-  grid-area: chips;
-}
-
-.target {
-  grid-area: target;
-  margin-bottom: 30px;
-  border-radius: 25%;
-  box-shadow: 0px 1px 2px 2px rgba(19, 44, 15, 0.685);
-  place-self: center;
-}
-
-.rules {
-  text-align: start;
-}
-
-.bag {
-  height: 160px;
-  width: 160px;
-  padding-top: 10px;
 }
