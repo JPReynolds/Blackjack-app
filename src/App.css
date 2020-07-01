@@ -1,4 +1,7 @@
 @media only screen and (max-width: 600px) {
+  .App {
+    font-family: Arial, Helvetica, sans-serif !important;
+  }
   .place-bet {
     margin: 0 !important;
     display: flex !important;
