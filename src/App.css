@@ -62,8 +62,9 @@
   text-align: center;
   background-color: rgb(27, 143, 42);
   display: grid;
+  height: 100%;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 5.5fr 1fr auto;
+  grid-template-rows: auto 5.5fr 1fr 1.1fr;
   grid-template-areas: 'header' 'game' 'bank' 'footer';
 }
 
@@ -104,7 +105,7 @@ h3 {
 }
 
 .bank div {
-  font-size: 1.5em;
+  font-size: 1.4em;
   margin: 0px 50px 0 50px;
   font-weight: 600;
 }
@@ -123,14 +124,15 @@ footer {
   grid-area: footer;
   margin-top: 10px;
   height: 55px;
+  align-self: end;
 }
 
 .place-bet {
   margin: 0px 100px 10px 100px;
   display: grid;
   grid-template-columns: auto auto;
-  grid-template-rows: auto auto auto;
-  grid-template-areas: 'rules target' 'rules target' 'bet chips';
+  grid-template-rows: auto auto;
+  grid-template-areas: 'rules target' 'bet chips';
 }
 
 .place-bet--title {
@@ -175,6 +177,7 @@ footer {
   grid-area: rules;
   font-size: 1.5em;
   text-align: start;
+  margin-top: 0;
 }
 
 li {
@@ -232,7 +235,7 @@ li {
   font-weight: 650;
   height: 50px;
   width: 175px;
-  margin: 10px 15px 30px 15px;
+  margin: 10px 15px 10px 15px;
   outline: none;
   border: none;
   border-radius: 15px;
