@@ -8,6 +8,10 @@
     flex-direction: column;
   }
 
+  button {
+    font-family: Arial, Helvetica, sans-serif !important;
+  }
+
   h1,
   h2 {
     font-weight: 700 !important;
@@ -21,6 +25,10 @@
     margin-top: 20px !important;
   }
 
+  li {
+    line-height: 20px !important;
+  }
+
   .rules {
     font-size: 1em !important;
     line-height: 10px !important;
@@ -29,6 +37,7 @@
   .bet {
     height: 90px !important;
     width: 90px !important;
+    font-size: 1.1em !important;
   }
 
   .link--bet {
@@ -143,17 +152,16 @@ footer {
 }
 
 .link--bet {
-  align-self: center;
-  justify-self: center;
+  grid-area: bet;
 }
 
 .bet {
-  grid-area: bet;
   height: 120px;
   width: 120px;
   font-weight: 600;
   border-radius: 100%;
   border: none;
+  text-align: center;
   margin: 10px 10px 10px 10px;
   background-color: rgba(189, 26, 26, 0.822);
   box-shadow: 0px 8px 10px 0px rgba(182, 7, 7, 0.3),
